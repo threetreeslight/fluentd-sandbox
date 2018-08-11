@@ -1,0 +1,17 @@
+version: "3"
+services:
+  tail:
+    build:
+      context: .
+    volumes:
+      - bundler:/fluentd/vendor
+      - ./tail/conf.d:/fluentd/etc/conf.d
+      - ./tail/gemfiles:/fluentd/etc/gemfiles
+      - ./log:/var/log/sandbox
+    ports:
+      - 24224:24224
+
+volumes:
+  bundler:
+    driver: local
+
